@@ -17,6 +17,7 @@
 
     <properties>
         <assemblyDirectory>${project.build.directory}/idp-example-tomcat-base</assemblyDirectory>
+        <jstl.version>1.2</jstl.version>
     </properties>
 
     <repositories>
@@ -71,6 +72,30 @@
                                     </excludes>
                                 </resource>
                             </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <!-- Copy Java Server Tag Library to tomcat-base/lib directory. -->
+                    <execution>
+                        <id>copy-jstl</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>javax.servlet</groupId>
+                                    <artifactId>jstl</artifactId>
+                                    <version>${jstl.version}</version>
+                                    <type>jar</type>
+                                    <outputDirectory>${assemblyDirectory}/tomcat-base/lib/</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
                         </configuration>
                     </execution>
                 </executions>

@@ -15,6 +15,10 @@
     <artifactId>idp-example-tomcat-base</artifactId>
     <packaging>pom</packaging>
 
+    <properties>
+        <assemblyDirectory>${project.build.directory}/idp-example-tomcat-base</assemblyDirectory>
+    </properties>
+
     <repositories>
         <repository>
             <id>shib-release</id>
@@ -43,5 +47,57 @@
 
         <!-- Managed Dependencies -->
     </dependencies>
-    
+
+    <build>
+        <plugins>
+            <!-- Copy src/main/resources to assembly directory. -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <includeEmptyDirs>true</includeEmptyDirs>
+                            <outputDirectory>${assemblyDirectory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/src/main/resources</directory>
+                                    <excludes>
+                                        <exclude>**/.gitkeep</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Assemble -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>src/main/assembly/tgz.xml</descriptor>
+                        <descriptor>src/main/assembly/zip.xml</descriptor>
+                    </descriptors>
+                    <tarLongFileMode>gnu</tarLongFileMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+ 
 </project>

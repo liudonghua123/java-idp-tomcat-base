@@ -14,10 +14,12 @@
     <groupId>net.shibboleth.idp.example</groupId>
     <artifactId>idp-example-tomcat-base</artifactId>
     <packaging>pom</packaging>
+    <version>8.0.0-SNAPSHOT</version>
 
     <properties>
         <assemblyDirectory>${project.build.directory}/idp-example-tomcat-base</assemblyDirectory>
         <jstl.version>1.2</jstl.version>
+        <tomcat.version>8.0.36</tomcat.version>
     </properties>
 
     <repositories>
@@ -94,6 +96,26 @@
                                     <version>${jstl.version}</version>
                                     <type>jar</type>
                                     <outputDirectory>${assemblyDirectory}/tomcat-base/lib/</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <!-- Copy tomcat-juli to tomcat-base/bin directory. -->
+                    <execution>
+                        <id>copy-tomcat-juli</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.tomcat</groupId>
+                                    <artifactId>tomcat-juli</artifactId>
+                                    <version>${tomcat.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>false</overWrite>
+                                    <outputDirectory>${assemblyDirectory}/tomcat-base/bin</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>

@@ -10,14 +10,14 @@
         <version>TRUNK-SNAPSHOT</version>
     </parent>
 
-    <name>idp-example-tomcat-base</name>
-    <groupId>net.shibboleth.idp.example</groupId>
-    <artifactId>idp-example-tomcat-base</artifactId>
+    <name>idp-tomcat-base</name>
+    <groupId>net.shibboleth.idp</groupId>
+    <artifactId>idp-tomcat-base</artifactId>
     <packaging>pom</packaging>
     <version>8.0.0-SNAPSHOT</version>
 
     <properties>
-        <assemblyDirectory>${project.build.directory}/idp-example-tomcat-base</assemblyDirectory>
+        <assemblyDirectory>${project.build.directory}/idp-tomcat-base</assemblyDirectory>
         <jstl.version>1.2</jstl.version>
         <tomcat.version>8.0.36</tomcat.version>
     </properties>

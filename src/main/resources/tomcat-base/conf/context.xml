@@ -26,4 +26,7 @@
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
     <Manager pathname="" />
 
+    <!-- Increase static resource cache size to avoid log warnings. -->
+    <Resources cachingAllowed="true" cacheMaxSize="20480" />
+
 </Context>

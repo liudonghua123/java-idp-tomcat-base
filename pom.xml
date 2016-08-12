@@ -20,6 +20,7 @@
         <assemblyDirectory>${project.build.directory}/idp-tomcat-base</assemblyDirectory>
         <jstl.version>1.2</jstl.version>
         <tomcat.version>8.5.4</tomcat.version>
+        <trustany-ssl.version>1.0.0</trustany-ssl.version>
     </properties>
 
     <repositories>
@@ -94,6 +95,25 @@
                                     <groupId>javax.servlet</groupId>
                                     <artifactId>jstl</artifactId>
                                     <version>${jstl.version}</version>
+                                    <type>jar</type>
+                                    <outputDirectory>${assemblyDirectory}/tomcat-base/lib/</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <!-- Copy trustany-ssl plugin to tomcat-base/lib directory. -->
+                    <execution>
+                        <id>copy-trustany-ssl</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>net.shibboleth.utilities</groupId>
+                                    <artifactId>trustany-ssl</artifactId>
+                                    <version>${trustany-ssl.version}</version>
                                     <type>jar</type>
                                     <outputDirectory>${assemblyDirectory}/tomcat-base/lib/</outputDirectory>
                                 </artifactItem>

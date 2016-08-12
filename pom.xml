@@ -100,6 +100,26 @@
                             </artifactItems>
                         </configuration>
                     </execution>
+                    <!-- Copy tomcat-juli to tomcat-base/bin directory. -->
+                    <execution>
+                        <id>copy-tomcat-juli</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.tomcat</groupId>
+                                    <artifactId>tomcat-juli</artifactId>
+                                    <version>${tomcat.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>false</overWrite>
+                                    <outputDirectory>${assemblyDirectory}/tomcat-base/bin</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <!-- Assemble -->

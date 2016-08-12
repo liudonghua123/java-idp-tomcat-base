@@ -54,6 +54,7 @@
     -->
     <Connector port="${tomcat.nonhttps.port}" protocol="HTTP/1.1"
                connectionTimeout="20000"
+               maxPostSize="100000"
                redirectPort="${tomcat.https.port}" />
     <!-- A "Connector" using the shared thread pool-->
     <!--

@@ -14,6 +14,7 @@
     <groupId>net.shibboleth.idp</groupId>
     <artifactId>idp-tomcat-base</artifactId>
     <packaging>pom</packaging>
+    <version>8.5.0-SNAPSHOT</version>
 
     <properties>
         <assemblyDirectory>${project.build.directory}/idp-tomcat-base</assemblyDirectory>

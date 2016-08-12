@@ -18,6 +18,7 @@
     <properties>
         <assemblyDirectory>${project.build.directory}/idp-tomcat-base</assemblyDirectory>
         <jstl.version>1.2</jstl.version>
+        <tomcat.version>8.5.4</tomcat.version>
     </properties>
 
     <repositories>

@@ -140,6 +140,27 @@
                             </artifactItems>
                         </configuration>
                     </execution>
+                    <!-- Copy Logback dependencies to tomcat-base/lib/ directory. -->
+                    <execution>
+                        <id>copy-tomcat-logging-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>ch.qos.logback</groupId>
+                                    <artifactId>logback-core</artifactId>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>ch.qos.logback</groupId>
+                                    <artifactId>logback-access</artifactId>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${assemblyDirectory}/tomcat-base/lib/</outputDirectory>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <!-- Assemble -->

@@ -44,25 +44,6 @@
         maxThreads="150" minSpareThreads="4"/>
     -->
 
-
-    <!-- A "Connector" represents an endpoint by which requests are received
-         and responses are returned. Documentation at :
-         Java HTTP Connector: /docs/config/http.html
-         Java AJP  Connector: /docs/config/ajp.html
-         APR (HTTP/AJP) Connector: /docs/apr.html
-         Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
-    -->
-    <Connector port="${tomcat.nonhttps.port}" protocol="HTTP/1.1"
-               connectionTimeout="20000"
-               maxPostSize="100000"
-               redirectPort="${tomcat.https.port}" />
-    <!-- A "Connector" using the shared thread pool-->
-    <!--
-    <Connector executor="tomcatThreadPool"
-               port="8080" protocol="HTTP/1.1"
-               connectionTimeout="20000"
-               redirectPort="8443" />
-    -->
     <!-- Define a SSL/TLS HTTP/1.1 Connector on port 8443
          This connector uses the NIO implementation with the JSSE engine. When
          using the JSSE engine, the JSSE configuration attributes must be used.

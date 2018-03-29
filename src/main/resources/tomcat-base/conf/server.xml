@@ -69,9 +69,10 @@
     -->
 
     <Connector port="${tomcat.https.port}" protocol="org.apache.coyote.http11.Http11NioProtocol"
-               maxThreads="150" SSLEnabled="true">
+               maxThreads="150" SSLEnabled="true" scheme="https" secure="true">
         <SSLHostConfig>
             <Certificate certificateKeystoreFile="${tomcat.https.certificateKeystoreFile}"
+                         certificateKeystorePassword="${tomcat.https.certificateKeystorePassword}"
                          type="RSA" />
         </SSLHostConfig>
     </Connector>
